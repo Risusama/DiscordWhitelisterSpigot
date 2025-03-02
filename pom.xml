@@ -94,7 +94,7 @@
     <dependency>
       <groupId>org.yaml</groupId>
       <artifactId>snakeyaml</artifactId>
-      <version>2.2</version>
+      <version>2.4</version>
     </dependency>
 
     <dependency>
@@ -109,7 +109,7 @@
       <groupId>com.github.LeonMangler</groupId>
       <artifactId>SuperVanish</artifactId>
       <!-- POM is invalid with java compiler ver > 8 (maven-compiler-plugin source & target version is set to 8) -->
-      <version>fbc303bbee6e129e56b3e89c5e83e98ee2127ff2</version>
+      <version>6.2.19</version>
       <scope>provided</scope>
     </dependency>
 
