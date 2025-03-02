@@ -78,5 +78,5 @@ jobs:
     - name: Upload the generated artifact
       uses: actions/upload-artifact@v4
       with:
-        name: DiscordWhitelister
-        path: release.zip
+        name: discord-whitelister-jar
+        path: home/runner/work/DiscordWhitelisterSpigot/DiscordWhitelisterSpigot/target/discord-whitelister-([0-9]\.){3}jar
