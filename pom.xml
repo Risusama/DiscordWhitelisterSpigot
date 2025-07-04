@@ -109,7 +109,7 @@
       <groupId>com.github.LeonMangler</groupId>
       <artifactId>SuperVanish</artifactId>
       <!-- POM is invalid with java compiler ver > 8 (maven-compiler-plugin source & target version is set to 8) -->
-      <version>46b05810059768bd4749f6243cc17d343413c06a</version>
+      <version>6.2.19</version>
       <scope>provided</scope>
     </dependency>
 
