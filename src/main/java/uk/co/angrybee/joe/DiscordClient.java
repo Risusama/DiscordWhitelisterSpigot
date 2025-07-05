@@ -1,6 +1,5 @@
 package uk.co.angrybee.joe;
 
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import net.dv8tion.jda.api.EmbedBuilder;
@@ -36,7 +35,9 @@ import javax.security.auth.login.LoginException;
 import java.awt.Color;
 import java.io.*;
 import java.net.MalformedURLException;
+import java.net.URISyntaxException;
 import java.net.URL;
+import java.net.URI;
 import java.net.URLConnection;
 import java.util.*;
 import java.util.concurrent.RecursiveTask;
@@ -840,17 +841,15 @@ public class DiscordClient extends ListenerAdapter {
 
         try
         {
-            URL pURL = new URL("https://api.mojang.com/users/profiles/minecraft/" + minecraftUsername);
+            URL pURL = new URI("https://api.mojang.com/users/profiles/minecraft/" + minecraftUsername).toURL();
             URLConnection req = pURL.openConnection();
             req.connect();
 
-            JsonParser jsonParser = new JsonParser();
-            JsonElement root = (JsonElement) jsonParser.parse(new InputStreamReader((InputStream) req.getContent()));
-            JsonObject rootObj = root.getAsJsonObject();
-            playerId = rootObj.get("id").getAsString();
+            JsonObject json = JsonParser.parseReader(new InputStreamReader(req.getInputStream())).getAsJsonObject();
+            playerId = json.get("id").getAsString();
 
         }
-        catch (IOException e)
+        catch (IOException | URISyntaxException e)
         {
             e.printStackTrace();
         }
