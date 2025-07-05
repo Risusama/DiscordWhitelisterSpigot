@@ -10,12 +10,12 @@ public class SuperVanishEvents implements Listener {
 
     @EventHandler
     public void onPlayerShowEvent(PlayerShowEvent event){
-        VanishEvents.onPlayerShow(event.getPlayer().getDisplayName());
+        VanishEvents.onPlayerShow(event.getPlayer().getName());
     }
 
     @EventHandler
     public void onPlayerHideEvent(PlayerHideEvent event){
-        VanishEvents.onPlayerHide(event.getPlayer().getDisplayName());
+        VanishEvents.onPlayerHide(event.getPlayer().getName());
     }
 
 }

@@ -10,11 +10,11 @@ public class VanishNoPacketEvents implements Listener {
     public void onVanishStatusChangeEvent(VanishStatusChangeEvent event){
         // If value is true (player just vanished)
         if(event.isVanishing()) {
-            VanishEvents.onPlayerHide(event.getPlayer().getDisplayName());
+            VanishEvents.onPlayerHide(event.getPlayer().getName());
         }
         // If value is false (player just un-vanished)
         else {
-            VanishEvents.onPlayerShow(event.getPlayer().getDisplayName());
+            VanishEvents.onPlayerShow(event.getPlayer().getName());
         }
     }
 

@@ -1,6 +1,6 @@
 package uk.co.angrybee.joe.commands.minecraft;
 
-import org.bukkit.ChatColor;
+import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -17,9 +17,9 @@ public class CommandStatus implements CommandExecutor {
     {
         String discordOnlineStatus = DiscordClient.getOnlineStatus();
         if (discordOnlineStatus.toLowerCase().equals("connected")) {
-            discordOnlineStatus = ChatColor.GREEN + discordOnlineStatus;
+            discordOnlineStatus = NamedTextColor.GREEN + discordOnlineStatus;
         } else {
-            discordOnlineStatus = ChatColor.RED + discordOnlineStatus;
+            discordOnlineStatus = NamedTextColor.RED + discordOnlineStatus;
         }
         sender.sendMessage("[DW] DiscordWhiteLister runs on: " + VersionInfo.getLongVersion());
         sender.sendMessage("[DW] Discord Bot: " + discordOnlineStatus);

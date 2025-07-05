@@ -82,7 +82,7 @@ public class OnBanEvent implements Listener
         }
 
         // Assign initial ban target to in-game removed list
-        InGameRemovedList.AddUserToStore(banTarget, commandCaller.getDisplayName());
+        InGameRemovedList.AddUserToStore(banTarget, commandCaller.getName());
 
         // Check if the player is whitelisted
         if(!WhitelistedPlayers.usingEasyWhitelist && WhitelistedPlayers.CheckForPlayer(banTarget)
@@ -106,7 +106,7 @@ public class OnBanEvent implements Listener
                                         + " from the whitelist as they were added by Discord Id: " + discordId);
 
                                 // Add username to the in-game removed list
-                                InGameRemovedList.AddUserToStore((String) targetWhitelistedPlayer, commandCaller.getDisplayName());
+                                InGameRemovedList.AddUserToStore((String) targetWhitelistedPlayer, commandCaller.getName());
                             }
                         }
                         // Remove the users whitelisted players from the list

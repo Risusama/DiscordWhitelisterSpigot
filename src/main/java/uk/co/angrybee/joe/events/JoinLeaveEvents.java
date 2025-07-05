@@ -22,7 +22,7 @@ public class JoinLeaveEvents implements Listener
         {
             if(Utils.isVanished(player))
             {
-                DiscordWhitelister.getPlugin().getLogger().info("Player " + player.getDisplayName() + " joined while vanished, not incrementing player count");
+                DiscordWhitelister.getPlugin().getLogger().info("Player " + player.displayName() + " joined while vanished, not incrementing player count");
                 DiscordWhitelister.addVanishedPlayer();
                 return;
             }
@@ -38,7 +38,7 @@ public class JoinLeaveEvents implements Listener
         {
             if(Utils.isVanished(player))
             {
-                DiscordWhitelister.getPlugin().getLogger().info("Player " + player.getDisplayName() + " quit while vanished, not decrementing player count");
+                DiscordWhitelister.getPlugin().getLogger().info("Player " + player.displayName() + " quit while vanished, not decrementing player count");
                 DiscordWhitelister.removeVanishedPlayer();
                 return;
             }
