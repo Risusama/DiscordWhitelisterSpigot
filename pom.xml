@@ -48,11 +48,24 @@
 
 
   <dependencies>
-    <dependency>
+    <!--dependency>
       <groupId>org.spigotmc</groupId>
       <artifactId>spigot-api</artifactId>
       <version>1.20.6-R0.1-SNAPSHOT</version>
       <scope>provided</scope>
+    </dependency-->
+
+    <dependency>
+      <groupId>io.papermc.paper</groupId>
+      <artifactId>paper-api</artifactId>
+      <version>1.20.6-R0.1-SNAPSHOT</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>io.papermc.adventure</groupId>
+      <artifactId>adventure-api</artifactId>
+      <version>4.21.0-mc1215-SNAPSHOT</version>
     </dependency>
 
     <dependency>
