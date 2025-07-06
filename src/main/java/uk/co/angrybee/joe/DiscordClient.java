@@ -190,7 +190,7 @@ public class DiscordClient extends ListenerAdapter {
         // build here instead of every time a message is received, as they do not change
         EmbedBuilder embedBuilderBotInfo = new EmbedBuilder();
         embedBuilderBotInfo.setTitle("Discord Whitelister for Spigot");
-        embedBuilderBotInfo.addField("Version", VersionInfo.getVersion(), false);
+        embedBuilderBotInfo.addField("Version", new DiscordWhitelister().getPluginMeta().getVersion(), false);
         embedBuilderBotInfo.addField("Links", ("https://www.spigotmc.org/resources/discord-whitelister.69929/\nhttps://github.com/JoeShimell/DiscordWhitelisterSpigot"), false);
         embedBuilderBotInfo.addField("Commands", ("**Add:** /whitelist add minecraftUsername\n**Remove:** /whitelist remove minecraftUsername"), false);
         embedBuilderBotInfo.addField("Experiencing issues?", "If you encounter an issue, please report it here: https://github.com/JoeShimell/DiscordWhitelisterSpigot/issues", false);
@@ -601,7 +601,7 @@ public class DiscordClient extends ListenerAdapter {
 
             List<?> regUsers = UserList.getRegisteredUsers(disId);
             if (regUsers != null) {
-                if (regUsers.size() <= 0) {
+                if (regUsers.isEmpty()) {
                     DiscordWhitelister.getPluginLogger().info(nameForLogger + "'s entries are empty, doing nothing");
                     return;
                 }
@@ -641,7 +641,7 @@ public class DiscordClient extends ListenerAdapter {
 
             Set<String> keys = UserList.getUserList().getKeys(false);
             // Make sure the user list is not empty
-            if (keys.size() == 0) {
+            if (keys.isEmpty()) {
                 return;
             }
 
@@ -671,7 +671,7 @@ public class DiscordClient extends ListenerAdapter {
                 if (!rolesRemaining) {
                     DiscordWhitelister.getPlugin().getLogger().info(userId + " has no roles remaining. Removing their whitelisted entries...");
                     List<?> registeredUsers = UserList.getRegisteredUsers(userId);
-                    if (registeredUsers == null || registeredUsers.size() <= 0) {
+                    if (registeredUsers == null || registeredUsers.isEmpty()) {
                         DiscordWhitelister.getPluginLogger().info("User ID: " + userId + "has no whitelisted users, doing nothing...");
                     } else {
                         for (Object wUser : registeredUsers) {
@@ -687,7 +687,7 @@ public class DiscordClient extends ListenerAdapter {
                 }
             }
         } else {
-            if (roleToCheck == null || roleToCheck.equals("")) {
+            if (roleToCheck == null || roleToCheck.isEmpty()) {
                 DiscordWhitelister.getPluginLogger().warning("'un-whitelist-if-missing-role' is enabled but " +
                         "'role-to-check-for' is null or empty, please double check the config");
                 return;
@@ -697,7 +697,7 @@ public class DiscordClient extends ListenerAdapter {
 
             Set<String> keys = UserList.getUserList().getKeys(false);
             // Make sure the user list is not empty
-            if (keys.size() == 0) {
+            if (keys.isEmpty()) {
                 return;
             }
 
@@ -725,7 +725,7 @@ public class DiscordClient extends ListenerAdapter {
 
                 if (!requiredRole) {
                     List<?> registeredUsers = UserList.getRegisteredUsers(userId);
-                    if (registeredUsers == null || registeredUsers.size() <= 0) {
+                    if (registeredUsers == null || registeredUsers.isEmpty()) {
                         DiscordWhitelister.getPluginLogger().info("User ID: " + userId + "has no whitelisted users, doing nothing...");
                     } else {
                         for (Object wUser : registeredUsers) {
@@ -756,7 +756,7 @@ public class DiscordClient extends ListenerAdapter {
 
             Set<String> keys = UserList.getUserList().getKeys(false);
             // Make sure the user list is not empty
-            if (keys.size() == 0) {
+            if (keys.isEmpty()) {
                 return;
             }
 
@@ -798,7 +798,7 @@ public class DiscordClient extends ListenerAdapter {
 
         Set<String> keys = UserList.getUserList().getKeys(false);
         // Make sure the user list is not empty
-        if (keys.size() == 0) {
+        if (keys.isEmpty()) {
             return;
         }
         // Search for name and Id linked to it
@@ -813,7 +813,7 @@ public class DiscordClient extends ListenerAdapter {
         }
 
         // Check if we found any IDs
-        if (idsContainingTargetName.size() > 0) {
+        if (! idsContainingTargetName.isEmpty()) {
             DiscordWhitelister.getPluginLogger().info("Found " + idsContainingTargetName.size() + " occurrence(s) of " + targetName + " in the user list, removing...");
 
             for (String s : idsContainingTargetName) {
@@ -825,7 +825,7 @@ public class DiscordClient extends ListenerAdapter {
                     UserList.getUserList().set(s, newWhitelistedUsers);
                 } else {
                     // Double check the 1 whitelisted user == targetName
-                    if (newWhitelistedUsers.get(0).equals(targetName))
+                    if (newWhitelistedUsers.getFirst().equals(targetName))
                         UserList.getUserList().set(s, null);
                 }
 
@@ -915,7 +915,7 @@ public class DiscordClient extends ListenerAdapter {
             else
                 tempFoundRoles = Collections.singletonList(targetGuild.getRoleById(s));
 
-            if (tempFoundRoles.size() > 0) {
+            if (! tempFoundRoles.isEmpty()) {
                 rolesFound.addAll(tempFoundRoles);
             } else {
                 String discordUserName = targetGuild.getMemberById(targetUserId).getEffectiveName();
@@ -926,7 +926,7 @@ public class DiscordClient extends ListenerAdapter {
         }
 
         // Check if any roles were found
-        if (rolesFound.size() > 0) {
+        if (! rolesFound.isEmpty()) {
             // Assign the roles
             for (Role role : rolesFound) {
                 targetGuild.addRoleToMember(targetGuild.getMemberById(targetUserId), role).queue();
@@ -953,7 +953,7 @@ public class DiscordClient extends ListenerAdapter {
             else
                 tempFoundRoles = Collections.singletonList(targetGuild.getRoleById(s));
 
-            if (tempFoundRoles.size() > 0) {
+            if (! tempFoundRoles.isEmpty()) {
                 rolesFound.addAll(tempFoundRoles);
             } else {
                 String discordUserName = targetGuild.getMemberById(targetUserId).getEffectiveName();
@@ -964,7 +964,7 @@ public class DiscordClient extends ListenerAdapter {
         }
 
         // Check if any roles were found
-        if (rolesFound.size() > 0) {
+        if (! rolesFound.isEmpty()) {
             // Remove the roles
             for (Role role : rolesFound) {
                 targetGuild.removeRoleFromMember(targetGuild.getMemberById(targetUserId), role).queue();

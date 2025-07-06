@@ -48,7 +48,7 @@ public class OnBanEvent implements Listener
         }
 
         // Check if there is a name to query
-        if(banTarget.equals(""))
+        if(banTarget.isEmpty())
             return;
 
         // Check if the player has ever joined the server or is on the whitelist

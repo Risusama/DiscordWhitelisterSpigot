@@ -6,7 +6,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.jetbrains.annotations.NotNull;
 import uk.co.angrybee.joe.DiscordClient;
-import uk.co.angrybee.joe.VersionInfo;
+import uk.co.angrybee.joe.DiscordWhitelister;
 
 public class CommandStatus implements CommandExecutor {
 
@@ -16,12 +16,12 @@ public class CommandStatus implements CommandExecutor {
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args)
     {
         String discordOnlineStatus = DiscordClient.getOnlineStatus();
-        if (discordOnlineStatus.toLowerCase().equals("connected")) {
+        if (discordOnlineStatus.equalsIgnoreCase("connected")) {
             discordOnlineStatus = NamedTextColor.GREEN + discordOnlineStatus;
         } else {
             discordOnlineStatus = NamedTextColor.RED + discordOnlineStatus;
         }
-        sender.sendMessage("[DW] DiscordWhiteLister runs on: " + VersionInfo.getLongVersion());
+        sender.sendMessage("[DW] DiscordWhiteLister is version: " + new DiscordWhitelister().getPluginMeta().getVersion());
         sender.sendMessage("[DW] Discord Bot: " + discordOnlineStatus);
         return true;
     }
