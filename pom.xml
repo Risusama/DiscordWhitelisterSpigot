@@ -6,7 +6,7 @@
 
   <groupId>uk.co.angrybee.joe</groupId>
   <artifactId>discord-whitelister</artifactId>
-  <version>1.5.1</version>
+  <version>1.5.2</version>
 
   <name>discord-whitelister</name>
   <url>https://github.com/JoeShimell/DiscordWhitelisterSpigot</url>
@@ -58,7 +58,7 @@
     <dependency>
       <groupId>io.papermc.paper</groupId>
       <artifactId>paper-api</artifactId>
-      <version>1.20.6-R0.1-SNAPSHOT</version>
+      <version>1.21.7-R0.1-SNAPSHOT</version>
       <scope>provided</scope>
     </dependency>
 
