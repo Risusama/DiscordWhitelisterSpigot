@@ -63,12 +63,6 @@
     </dependency>
 
     <dependency>
-      <groupId>io.papermc.adventure</groupId>
-      <artifactId>adventure-api</artifactId>
-      <version>4.21.0-mc1215-SNAPSHOT</version>
-    </dependency>
-
-    <dependency>
       <groupId>net.dv8tion</groupId>
       <artifactId>JDA</artifactId>
       <version>5.0.2</version>
